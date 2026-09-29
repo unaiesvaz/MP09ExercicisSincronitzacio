@@ -9,14 +9,11 @@ public class ParkingLot {
         semaphore = new Semaphore(capacidad); // El constructor se encarga de decirle al semaforo las plazas que hay
     }
 
-    ParkingLot parking = new ParkingLot(2); //Al hacer esto, indicamos al constructor que la capacidad es 2
-    // NOTA: este valor, se puede pasar de 2 en este caso haciendo .release, eso lo controlamos nosotros 
-
     public void entrar(String coche) { //Metodo para "Entrar al parking", restar 1 permiso al semaforo
         try {
-            System.out.println(coche + " Intenta entrar");
+            System.out.println(coche + " Intentando entrar...");
 
-            semaphore.acquire(); //Lo que hace es restar 1 al semaforo, si no tiene "plazas" disponibles, espera a que las haya 
+            semaphore.acquire(); //Lo que hace es restar 1 al semaforo, si no tiene "plazas" disponibles, espera a que las haya y se para la tarea en este punto
 
             System.out.println(coche + " Ya ha entrado");
 
@@ -27,6 +24,6 @@ public class ParkingLot {
 
     public void salir(String coche) {
         semaphore.release(); // Release lo que hace es sumar 1 plaza disponible, suma 1 permiso al semaforo
-        System.out.println(coche + " Ha salido del parking");
+        System.out.println(coche + " Ha salido del parking"); 
     }
 }
